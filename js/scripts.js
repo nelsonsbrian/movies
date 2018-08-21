@@ -44,15 +44,15 @@ $(document).ready(function() {
     var inputtedMovie = $("#movie").val();
     var inputtedAge = $("#age").val();
     var inputtedTime = $("#time").val();
-    var inputtedType = $("input:radio[name=type]:checked").val();
+    var inputtedType = $("#type").val();
     var newTicket = new Ticket(inputtedMovie, inputtedAge, inputtedTime, priceCalculation(inputtedMovie, inputtedAge, inputtedTime, inputtedType));
     ticketArray.push(newTicket);
     $("#output").text("");
     for (var i = 0; i < ticketArray.length; i++) {
-      $("#output").append("Movie: " + ticketArray[i].movieName + "<br>Time Showing: " + ticketArray[i].time + " Ticket Price: $" + ticketArray[i].price + "<br></hr>");
+      $("#output").append("<div class='ticketImage'>Movie: " + ticketArray[i].movieName + "<br>Time Showing: " + ticketArray[i].time + " Ticket Price: $" + ticketArray[i].price + ".00" + "</div>");
       total += ticketArray[i].price;
     }
-    $("#output").append("<br>Subtotal: $" + total)
+    $("#output").append("<br>Subtotal: $" + total + ".00")
     $("#output").append("<br>Tax: $" + tax(total));
     total = parseFloat(total) + parseFloat(tax(total));
     $("#output").append("<br>Total Price: $" + total);

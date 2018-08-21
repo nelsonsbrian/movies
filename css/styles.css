@@ -1,21 +1,24 @@
-/*body {
-  background: linear-gradient(to top right, #5143e8, #9387ff);
-  height: 1700px;
-}*/
-
-
+.ticketImage{
+    background-image: url('../img/paper.jpg');
+    padding: 10px;
+}
 
 h1 {
   text-align: center;
 }
 
+#movieType {
+  width: 30%;
+}
 
-
-input#inputTxt, input#inputName, label, button.btn {
-  width: 325px;
+label {
+  width: 425px;
 
 }
 
+select#age, select#type, select#movie, select#time {
+  width: 50%;
+}
 
 #show-place {
   display: none;
