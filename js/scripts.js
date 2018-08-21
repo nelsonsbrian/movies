@@ -1,76 +1,57 @@
 // business logic
-function Task(task, specific1, specific2, specific3, date, completed, index) {
-  this.task = task;
-  this.specific1 = specific1;
-  this.specific2 = specific2;
-  this.specific3 = specific3;
-  this.date = date;
-  this.completed = completed;
-  this.index = index;
+var ticketArray = [];
+var Ticket = function(movieName, age, time, price) {
+  this.movieName = movieName;
+  this.age = age;
+  this.time = time;
+  this.price = price;
 }
 
-Task.prototype.valid = function() {
-  if (this.completed) {
-    return "Completed";
-  } else {
-    return "Incomplete";
+var priceCalculation = function(inputtedMovie, inputtedAge, inputtedTime, inputtedType) {
+  var price = 10;
+  if (inputtedMovie === "Ocean's Eleven") {
+    price -= 2;
   }
+  if (inputtedMovie === "The Incredibles 2") {
+    price += 2;
+  }
+
+  if (inputtedAge === "60+" || inputtedAge === "Under 13") {
+    price -= 2;
+  }
+
+  if (inputtedTime === "11:00" || inputtedTime === "3:00") {
+    price -= 2;
+  }
+
+  if (inputtedType === "3D") {
+    price += 5;
+  }
+
+  if (inputtedType === "IMAX") {
+    price += 7;
+  }
+
+return price;
+
 }
-
-Task.prototype.specifics = function() {
-    return this.specific1 +", "+ this.specific2+ ", " + this.specific3;
-  }
-
-
-function AddCompleteButton() {
-    var r=$('<input/>').attr({
-        type: "button",
-        id: "button",
-        value: 'Complete'
-    });
-    $(".completed").append(r);
-  }
 // user logic
 $(document).ready(function() {
-  var index = 0;
-  $("form#add-list").submit(function(event) {
-    event.preventDefault();
+  var total = 0;
+  $('button#buy').click(function() {
+    var inputtedMovie = $("#movie").val();
+    var inputtedAge = $("#age").val();
+    var inputtedTime = $("#time").val();
+    var inputtedType = $("input:radio[name=type]:checked").val();
+    var newTicket = new Ticket(inputtedMovie, inputtedAge, inputtedTime, priceCalculation(inputtedMovie, inputtedAge, inputtedTime, inputtedType));
+    ticketArray.push(newTicket);
+    $("#output").text("");
+  for (var i = 0; i < ticketArray.length; i++) {
+    $("#output").append("Movie: " + ticketArray[i].movieName + "<br>Time Showing: " + ticketArray[i].time + "</hr>");
+    total += ticketArray[i].price;
+  }
+    $("#output").append("Total Price: " + total);
 
-    var inputIndex = index;
-    var inputTask = $("#task").val();
-    var inputSpecific1 = $("#specific1").val();
-    var inputSpecific2 = $("#specific2").val();
-    var inputSpecific3 = $("#specific3").val();
-    var inputDate = $("#date").val();
-    var newTask = new Task(inputTask, inputSpecific1, inputSpecific2, inputSpecific3, inputDate, 0, inputIndex);
-    index++;
-
-    $("ul#lists").append(`<li class='eachList' data-identifier='${index}'> ${newTask.task} </li>`);
-
-
-      // "<li><span class='eachList'" + id="" ">" + newTask.task + "</span></li>");
-
-    $(".eachList").last().click(function(){
-      // $("ul#lists").last().click(function(){
-        $("#show-list").hide();
-        $("#show-list").slideDown();
-        $("#show-list h2").text(newTask.task);
-        $(".task").text(newTask.task);
-        $(".specifics").text(newTask.specifics());
-        $(".date").text(newTask.date);
-        $(".completed").text(newTask.valid());
-        AddCompleteButton();
-        $("#button").last().click(function() {
-          alert(index);
-          $("li[data-identifier ="+index+"]").remove();
-        });
-
-
-      });
-
-    var inputs = ["task", "specific1", "specific2", "specific3", "date", "completed"];
-    inputs.forEach(function(input) {
-      $('input#' + input).val("");
-    });
+    // select element input grab - for later *
   });
 });

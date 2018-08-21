@@ -7,61 +7,59 @@
     <link href="css/styles.css" rel="stylesheet" type="text/css">
     <script src="js/jquery-3.3.1.js"></script>
     <script src="js/bootstrap.js"></script>
+    <script src="js/Popper.js"></script>
     <script src="js/scripts.js"></script>
-    <title>To Do List</title>
+    <title>At The Movies</title>
   </head>
   <body>
     <div class="container">
-      <h1 class="animated bounce">To Do List</h1>
-      <div>
-        <div class="row">
-          <div class="col-md-6">
-            <h2>Add a task:</h2>
-            <form id="add-list">
-              <div class="form-group">
-                <label for="task">Task:</label>
-                <input type="text" class="form-control" id="task">
-              </div>
-              <div class="form-group">
-                <label for="specific1">1st:</label>
-                <input type="text" class="form-control" id="specific1">
-              </div>
-              <div class="form-group">
-                <label for="specific2">2nd:</label>
-                <input type="text" class="form-control" id="specific2">
-              </div>
-              <div class="form-group">
-                <label for="specific3">3rd:</label>
-                <input type="text" class="form-control" id="specific3">
-              </div>
-              <div class="form-group">
-                <label for="date">Date:</label>
-                <input type="date" class="form-control" id="date">
-              </div>
-              <button type="submit" class="btn btn-warning">Add</button>
-            </form>
-
-            <h2>To do list:</h2>
-            <ul id="lists">
-
-            </ul>
-          </div>
-          <div class="col-md-6">
-            <div id="show-list">
-              <h2></h2>
-
-              <p>Task: <span class="task"></span></p>
-              <p>Specifics: <span class="specifics"></span></p>
-              <p>Date: <span class="date"></span></p>
-              <p>Completed: <span class="completed"></span><p>
-
-
-              <!-- <button type="button" id="completed" class="btn btn-danger">Completed</button> -->
-            </div>
-          </div>
-
-        </div>
+      <h1 class="animated bounce">Buy Tickets</h1>
+      <div class="form-group">
+        <label for="sel1">Choose your movie:</label>
+        <select class="form-control" id="movie">
+          <option class="movieSelect" id='77'>Michael Clayton</option>
+          <option class="movieSelect" id='88'>Ocean's Eleven</option>
+          <option class="movieSelect" id='99'>The Incredibles 2</option>
+          <option class="movieSelect" id='33'>Up</option>
+        </select>
       </div>
+      <div class="form-group">
+        <label for="sel1">Choose your age group:</label>
+        <select class="form-control" id="age">
+          <option class="ageSelect">Under 13</option>
+          <option class="ageSelect">13-18</option>
+          <option class="ageSelect">19-59</option>
+          <option class="ageSelect">60+</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="sel1">Select list:</label>
+        <select class="form-control" id="time">
+          <option class="timeSelect"id='77'>11:00</option>
+          <option class="timeSelect" id='88'>3:00</option>
+          <option class="timeSelect" id='99'>6:30</option>
+          <option class="timeSelect" id='33'>9:00</option>
+        </select>
+      </div>
+      <form>
+  <p>Please select your preferred viewing experience:</p>
+  <div>
+    <input type="radio" id="2D"
+     name="type" value="2D">
+    <label for="2D">Regular</label>
+
+    <input type="radio" id="3D"
+     name="type" value="3D">
+    <label for="contactChoice2">3D</label>
+
+    <input type="radio" id="IMAX"
+     name="type" value="IMAX">
+    <label for="contactChoice3">IMAX</label>
+  </form>
+</div>
+      <button type="button" id='buy' name="button"></button>
     </div>
+  <div id="output">
+  </div>
   </body>
   </html>
