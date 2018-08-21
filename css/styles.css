@@ -1,0 +1,31 @@
+/*body {
+  background: linear-gradient(to top right, #5143e8, #9387ff);
+  height: 1700px;
+}*/
+
+
+
+h1 {
+  text-align: center;
+}
+
+
+
+input#inputTxt, input#inputName, label, button.btn {
+  width: 325px;
+
+}
+
+
+#show-place {
+  display: none;
+}
+
+.eachPlace {
+  cursor: pointer;
+  color: #0088cc;
+}
+
+.eachPlace:hover {
+  text-decoration: underline;
+}
