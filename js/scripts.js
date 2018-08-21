@@ -5,6 +5,19 @@ var Ticket = function(movieName, age, time, price) {
   this.age = age;
   this.time = time;
   this.price = price;
+  this.imgFile = findImage(movieName);
+}
+
+var findImage = function(movieName) {
+  if (movieName === "Ocean's Eleven") {
+    return "img/oceansEleven.jpeg";
+  } else if (movieName === "The Incredibles 2") {
+    return "img/incredibles2.jpeg";
+  } else if (movieName === "Up") {
+    return "img/up.jpeg";
+  } else {
+    return "img/michaelClayton.jpg"
+  }
 }
 
 var priceCalculation = function(inputtedMovie, inputtedAge, inputtedTime, inputtedType) {
@@ -40,6 +53,7 @@ var tax = function(inputPrice) {
 $(document).ready(function() {
   var total = 0;
   $('button#buy').click(function() {
+    $("#outputTotal").show();
     total = 0;
     var inputtedMovie = $("#movie").val();
     var inputtedAge = $("#age").val();
@@ -48,14 +62,20 @@ $(document).ready(function() {
     var newTicket = new Ticket(inputtedMovie, inputtedAge, inputtedTime, priceCalculation(inputtedMovie, inputtedAge, inputtedTime, inputtedType));
     ticketArray.push(newTicket);
     $("#output").text("");
+    $("#outputTotal").text("");
     for (var i = 0; i < ticketArray.length; i++) {
-      $("#output").append("<div class='ticketImage'>Movie: " + ticketArray[i].movieName + "<br>Time Showing: " + ticketArray[i].time + " Ticket Price: $" + ticketArray[i].price + ".00" + "</div>");
-      total += ticketArray[i].price;
-    }
-    $("#output").append("<br>Subtotal: $" + total + ".00")
-    $("#output").append("<br>Tax: $" + tax(total));
+
+    $("#output").append("<div class='ticketImage'>Movie: " + ticketArray[i].movieName + "<br>Time Showing: " + ticketArray[i].time + "<br>Ticket Price: $" + ticketArray[i].price + ".00" + "</div>");
+    var img = $('<img />',
+                  {class:'ticketImage',
+                   src: ticketArray[i].imgFile
+                 }).appendTo($("#output"));
+    total += ticketArray[i].price;
+  }
+    $("#outputTotal").append("<hr>Subtotal: $" + total + ".00")
+    $("#outputTotal").append("<br>Tax: $" + tax(total));
     total = parseFloat(total) + parseFloat(tax(total));
-    $("#output").append("<br>Total Price: $" + total);
+    $("#outputTotal").append("<br><strong>Total Price: $" + total + "</strong>");
 
     // select element input grab - for later *
   });

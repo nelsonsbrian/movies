@@ -1,10 +1,36 @@
 .ticketImage{
     background-image: url('../img/paper.jpg');
     padding: 10px;
+    width: 30%;
+    font-family: cursive;
+}
+.outputImage {
+  width: 30%;
+  height: 30%;
+}
+
+#outputTotal {
+  background-image: url('../img/paper.jpg');
+  padding: 10px;
+  width: 30%;
+  text-align: right;
+  display: none;
+  font-family: cursive;
+}
+body {
+  background-color: black;
 }
 
 h1 {
   text-align: center;
+  color: white;
+}
+label {
+  color: white;
+}
+
+button {
+  margin-bottom: 15px;
 }
 
 #movieType {
@@ -31,4 +57,13 @@ select#age, select#type, select#movie, select#time {
 
 .eachPlace:hover {
   text-decoration: underline;
+}
+
+.black {
+  background-color: black;
+  color: white;
+}
+
+.white {
+  background-color: white;
 }
